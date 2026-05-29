@@ -201,13 +201,11 @@ class ChatClient:
 
                 with open(file_path, "rb") as file:
                     file_data = file.read()
-                header = f"FILE:{filename}:{len(file_data)}"
-                self.client.send(header.encode("utf-8"))
+                self.client.send(f"FILE:{self.username}:{filename}:{len(file_data)}".encode())
                 self.client.sendall(file_data)
-                self.display_message(
-                           f"📎 Sent: {filename}",
-                "me"
-            )
+
+                self.display_file_message(filename, "me")
+                self.save_message(f"FILE:{filename}", "me")
 
             except Exception as e:
                 print("File send error:", e)
@@ -237,11 +235,11 @@ class ChatClient:
                 data = json.load(file)
 
                 for msg in data:
-                    self.display_message(
-                        msg["message"],
-                        msg["sender"]
-                    )
-
+                    if msg["message"].startswith("FILE:"):
+                        filename = msg["message"].replace("FILE:", "").strip()
+                        self.display_file_message(filename, msg["sender"])
+                    else:
+                        self.display_message(msg["message"], msg["sender"])
     def receive(self):
         while True:
             try:
@@ -343,9 +341,27 @@ class ChatClient:
             self.msg_entry.delete(0, tk.END)
 
 
-    def display_file_message(self, filename):
+    def display_file_message(self, filename,sender="other"):
         outer = tk.Frame(self.scrollable_frame, bg="#ECE5DD")
         outer.pack(fill="x", pady=6, padx=10)
+        bubble_color = "#DCF8C6" if sender == "me" else "white"
+
+        file_path = filename if sender == "me" else f"received_{filename}"
+
+        bubble = tk.Button(
+        outer,
+        text=f"📎 {filename}",
+        bg=bubble_color,
+        fg="blue",
+        font=("Arial", 12),
+        padx=15,
+        pady=10,
+        wraplength=350,
+        justify="left",
+        bd=1,
+        relief="solid",
+        command=lambda: os.startfile(file_path)
+    )
 
         file_btn = tk.Button(
         outer,
@@ -355,8 +371,10 @@ class ChatClient:
         font=("Arial", 12),
         command=lambda: os.startfile(f"received_{filename}")
     )
-
-        file_btn.pack(anchor="w", padx=20)
+        if sender=="me":
+            file_btn.pack(anchor="e", padx=20)
+        else:
+            file_btn.pack(anchor="w", padx=20)
 
         self.canvas.update_idletasks()
         self.canvas.yview_moveto(1.0)
