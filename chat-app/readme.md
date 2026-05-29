@@ -38,6 +38,12 @@ The application enables multiple clients to communicate simultaneously through a
   - Client disconnection
   - Server restart
 
+### Message Notifications
+
+- Users receive instant notifications when new messages are received
+- Helps users stay updated even when not actively typing
+- Improves real-time communication experience   
+
 ### Emoji Support
 
 Includes limited emoji support for enhanced interaction.
