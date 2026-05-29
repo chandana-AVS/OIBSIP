@@ -1,123 +1,77 @@
 # Oasis Secure Chat Application
 
-## Overview
+## Objective
 
-Oasis Secure Chat Application is a real-time desktop messaging system built using Python socket programming and Tkinter.
+The objective of this project is to design and develop a secure real-time chat application that enables multiple users to communicate efficiently through a graphical interface while ensuring encrypted communication, message persistence, and basic document sharing.
 
-The application enables multiple clients to communicate simultaneously through a graphical user interface while ensuring secure encrypted communication using SSL. It also supports persistent chat history, allowing previous messages to be viewed even after the server is stopped and restarted.
+---
+
+## Steps Performed
+
+1. Designed the client-server architecture using socket programming
+2. Developed the server to handle multiple client connections
+3. Built a graphical user interface using Tkinter
+4. Implemented secure communication using SSL encryption
+5. Added real-time message exchange between connected clients
+6. Integrated persistent chat history storage
+7. Implemented document sharing functionality
+8. Added limited emoji support
+9. Added message notifications for incoming messages
+10. Tested multi-client communication and server reconnection
+
+---
+
+## Tools and Technologies Used
+
+* **Programming Language:** Python
+* **GUI Framework:** Tkinter
+* **Networking:** Socket Programming
+* **Security:** SSL Library
+* **Database:** SQLite
+* **Concurrency:** Multithreading
+* **Version Control:** Git & GitHub
 
 ---
 
 ## Features
 
-### Graphical User Interface (GUI)
-
-- User-friendly desktop interface built with Tkinter
-- Simple chat window for sending and receiving messages
-- Easy interaction without command-line complexity
-
-### Multi-Client Communication
-
-- Supports multiple clients connected to the server at the same time
-- Real-time message exchange between all connected users
-
-### Secure Communication
-
-- End-to-end encrypted communication using Python SSL library
-- Protects transmitted messages from interception
-
-### Document Sharing
-
-- Allows file/document sharing between connected clients
-
-### Persistent Chat History
-
-- Messages are stored locally
-- Previous chat history remains accessible even after:
-  - Server shutdown
-  - Client disconnection
-  - Server restart
-
-### Message Notifications
-
-- Users receive instant notifications when new messages are received
-- Helps users stay updated even when not actively typing
-- Improves real-time communication experience   
-
-### Emoji Support
-
-Includes limited emoji support for enhanced interaction.
-
-Supported examples:
-
-- 😊
-- ❤️
-- 👍
-- 🔥
-- 🎉
+* Graphical User Interface (GUI)
+* Multi-client communication
+* Secure encrypted messaging
+* Document sharing between clients
+* Persistent message history
+* Message notifications
+* Limited emoji support
+* Server reconnection with chat history retention
 
 ---
 
-## Technologies Used
+## Outcome
 
-- Python
-- Socket Programming
-- Tkinter
-- SSL Library
-- SQLite
-- Multithreading
+The project successfully demonstrates a secure desktop-based chat application capable of handling multiple clients simultaneously.
 
----
+It provides:
 
-## Project Structure
+* Secure communication using SSL
+* User-friendly graphical interaction
+* Reliable message persistence
+* Real-time notifications
+* Practical implementation of networking concepts
 
-```plaintext
-server.py
-client.py
-users.db
-server.crt
-server.key
-README.md
-```
+This project enhanced understanding of socket programming, secure communication protocols, multithreading, database management, and GUI development.
 
 ---
 
 ## How to Run
 
-### Start the Server
+### Start Server
 
 ```bash
 python server.py
 ```
 
-### Start the Client
+### Start Client
 
 ```bash
 python client.py
 ```
-
-Multiple clients can be launched simultaneously.
-
----
-
-## Learning Outcomes
-
-This project helped in understanding:
-
-- Client-server architecture
-- Socket programming
-- SSL encryption implementation
-- GUI development using Tkinter
-- Database persistence
-- Multithreading
-- Secure communication systems
-
----
-
-## Future Improvements
-
-- Advanced emoji support
-- File preview before sharing
-- User authentication system
-- Private messaging
-- Improved chat customization
